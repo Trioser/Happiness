@@ -38,6 +38,15 @@ class FaceView: UIView {
 			 return (min(bounds.size.width, bounds.size.height) / 2) * scale
 		}
 	}
+	
+	private struct Scaling {
+		static let FaceRadiusToEyeRadiusRatio: CGFloat = 10
+		static let FaceRadiusToEyeOffsetRatio: CGFloat = 3
+		static let FaceRadiusToEyeSeparationRatio: CGFloat = 1.5
+		static let FaceRadiusToMouthWidthRatio: CGFloat = 1
+		static let FaceRadiusToMouthHeightRatio: CGFloat = 3
+		static let FaceRadiusToMouthOffsetRatio: CGFloat = 3
+	}
 
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
