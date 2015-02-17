@@ -8,19 +8,23 @@
 
 import UIKit
 
+@IBDesignable
 class FaceView: UIView {
+	@IBInspectable
 	var scale: CGFloat = 0.9 {
 		didSet {
 			self.setNeedsDisplay() // redraw if lineWidth changes
 		}
 	}
 	
+	@IBInspectable
 	var lineWidth: CGFloat = 3 {
 		didSet {
 			self.setNeedsDisplay() // redraw if lineWidth changes
 		}
 	}
 	
+	@IBInspectable
 	var color: UIColor = UIColor.blueColor() {
 		didSet {
 			self.setNeedsDisplay() // redraw if color changes
@@ -107,7 +111,7 @@ class FaceView: UIView {
 		bezierPathForEye(Eye.Left).stroke()
 		bezierPathForEye(Eye.Right).stroke()
 
-		let smiliness = 0.75
+		let smiliness = -0.75
 		let smilepath = bezierPathForSmile(smiliness)
 		smilepath.stroke()
 	}

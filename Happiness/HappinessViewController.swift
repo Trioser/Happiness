@@ -31,5 +31,21 @@ class HappinessViewController: UIViewController
         // Pass the selected object to the new view controller.
     }
     */
-
+	
+	//
+	// Additions from lecture
+	//
+	
+	// Our happiness model
+	var happiness: Int = 50 {// 0 = very sad, 100 = ecstatic
+		didSet {
+			happiness = min(max(happiness, 0), 100) // keep happiness between 0 and 100
+			println("Happiness value is = \(happiness)")
+			updateUI()
+		}
+	}
+	
+	private func updateUI() {
+		
+	}
 }
