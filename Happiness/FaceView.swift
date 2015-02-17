@@ -106,6 +106,9 @@ class FaceView: UIView {
 		// Draw the face's left eye
 		bezierPathForEye(Eye.Left).stroke()
 		bezierPathForEye(Eye.Right).stroke()
-		bezierPathForSmile(1).stroke()
-    }
+
+		let smiliness = 0.75
+		let smilepath = bezierPathForSmile(smiliness)
+		smilepath.stroke()
+	}
 }
