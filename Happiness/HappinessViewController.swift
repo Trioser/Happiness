@@ -8,9 +8,15 @@
 
 import UIKit
 
-class HappinessViewController: UIViewController
+class HappinessViewController: UIViewController, FaceViewDataSource
 {
-    override func viewDidLoad() {
+	@IBOutlet weak var faceViewDelegate: FaceView! {
+		didSet {
+			faceViewDelegate.faceViewDataSource = self
+		}
+	}
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -32,20 +38,31 @@ class HappinessViewController: UIViewController
     }
     */
 	
+	private struct HappinessRange {
+		static let HAPPINESS_MAX: Int = 100
+		static let HAPPINESS_MIN: Int = 0
+		static let HAPPINESS_AVG: Int = HAPPINESS_MAX / 2
+	}
+	
 	//
 	// Additions from lecture
 	//
+	func smilinessForFaceView(sender: FaceView) -> Double? {
+		let result = Double(self.happiness - HappinessRange.HAPPINESS_AVG) / Double(HappinessRange.HAPPINESS_AVG)
+		let avg = HappinessRange.HAPPINESS_AVG
+		return result
+	}
 	
 	// Our happiness model
-	var happiness: Int = 50 {// 0 = very sad, 100 = ecstatic
+	var happiness: Int = 100 {// 0 = very sad, 100 = ecstatic
 		didSet {
-			happiness = min(max(happiness, 0), 100) // keep happiness between 0 and 100
+			happiness = min(max(happiness, 0), HappinessRange.HAPPINESS_MAX) // keep happiness between 0 and 100
 			println("Happiness value is = \(happiness)")
 			updateUI()
 		}
 	}
 	
 	private func updateUI() {
-		
+		faceViewDelegate.setNeedsDisplay()
 	}
 }
