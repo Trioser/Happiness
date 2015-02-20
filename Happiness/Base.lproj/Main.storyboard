@@ -41,7 +41,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="faceViewDelegate" destination="IR1-NI-peB" id="tWI-kI-evJ"/>
+                        <outlet property="faceView" destination="IR1-NI-peB" id="9CV-oR-m0j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1g-IZ-XnL" userLabel="First Responder" sceneMemberID="firstResponder"/>

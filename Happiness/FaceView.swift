@@ -37,6 +37,16 @@ class FaceView: UIView {
 	
 	weak var faceViewDataSource: FaceViewDataSource?
 	
+	//
+	// Hanldle pinch gestures.
+	//
+	func scale(gesture: UIPinchGestureRecognizer) {
+		if gesture.state == UIGestureRecognizerState.Changed {
+			scale *= gesture.scale
+			gesture.scale = 1
+		}
+	}
+	
 	var faceCenter: CGPoint {
 		get {
 			return self.convertPoint(center, fromView: superview)

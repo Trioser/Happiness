@@ -10,9 +10,10 @@ import UIKit
 
 class HappinessViewController: UIViewController, FaceViewDataSource
 {
-	@IBOutlet weak var faceViewDelegate: FaceView! {
+	@IBOutlet weak var faceView: FaceView! {
 		didSet {
-			faceViewDelegate.faceViewDataSource = self
+			faceView.faceViewDataSource = self
+			faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: "scale:"))
 		}
 	}
 	
@@ -63,6 +64,6 @@ class HappinessViewController: UIViewController, FaceViewDataSource
 	}
 	
 	private func updateUI() {
-		faceViewDelegate.setNeedsDisplay()
+		faceView.setNeedsDisplay()
 	}
 }
