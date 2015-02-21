@@ -15,7 +15,7 @@ protocol FaceViewDataSource: class {
 @IBDesignable
 class FaceView: UIView {
 	@IBInspectable
-	var scale: CGFloat = 0.9 {
+	var faceScale: CGFloat = 0.9 {
 		didSet {
 			self.setNeedsDisplay() // redraw if lineWidth changes
 		}
@@ -37,12 +37,27 @@ class FaceView: UIView {
 	
 	weak var faceViewDataSource: FaceViewDataSource?
 	
+	var scaleToggle: CGFloat = 0.5
+	
+	//
+	// On double tap, revert to previous scale
+	//
+	func zoomInOut(gesture: UITapGestureRecognizer) {
+		println("UITapGestureRecognizer target reached with \(gesture.numberOfTouches()) touches.")
+		if gesture.state == .Ended {
+			println("Double tap occurred.")
+			let oldFaceScale = self.faceScale
+			self.faceScale = scaleToggle ?? self.faceScale
+			scaleToggle = oldFaceScale
+		}
+	}
+	
 	//
 	// Hanldle pinch gestures.
 	//
 	func scale(gesture: UIPinchGestureRecognizer) {
 		if gesture.state == UIGestureRecognizerState.Changed {
-			scale *= gesture.scale
+			faceScale *= gesture.scale
 			gesture.scale = 1
 		}
 	}
@@ -55,7 +70,7 @@ class FaceView: UIView {
 	
 	var faceRadius: CGFloat {
 		get {
-			 return (min(bounds.size.width, bounds.size.height) / 2) * scale
+			 return (min(bounds.size.width, bounds.size.height) / 2) * faceScale
 		}
 	}
 	

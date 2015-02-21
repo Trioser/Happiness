@@ -14,12 +14,17 @@ class HappinessViewController: UIViewController, FaceViewDataSource
 		didSet {
 			faceView.faceViewDataSource = self
 			faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: "scale:"))
+			
+			let myGesture = UITapGestureRecognizer(target: faceView, action: "zoomInOut:")
+			myGesture.numberOfTapsRequired = 2
+			faceView.addGestureRecognizer(myGesture)
 		}
 	}
 	
 	private struct Constants {
 		static let HappinessGestureScale: CGFloat = 4
 	}
+	
 	
 	@IBAction func changeHappiness(gesture: UIPanGestureRecognizer) {
 		switch gesture.state {
