@@ -30,6 +30,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="scale">
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="faceScale">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ZJ3-nE-pWO" appends="YES" id="3c2-Ns-1VP"/>
@@ -55,7 +58,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-7" y="272"/>
+            <point key="canvasLocation" x="-383" y="260"/>
         </scene>
     </scenes>
 </document>
